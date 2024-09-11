@@ -69,3 +69,38 @@ def mostrar_resultados(imagen, sobel_x, sobel_y, magnitud, fase):
     - magnitud (numpy array): Magnitud combinada del gradiente.
     - fase (numpy array): Fase o dirección del gradiente.
     """
+
+    plt.figure(figsize=(14, 10))  # Establece el tamaño de la figura
+    
+    # Mostrar la imagen original
+    plt.subplot(2, 3, 1)
+    plt.imshow(imagen, cmap='gray')
+    plt.title('Imagen Original')
+    plt.axis('off')
+
+    # Mostrar el gradiente en la dirección X (Sobel X)
+    plt.subplot(2, 3, 2)
+    plt.imshow(sobel_x, cmap='gray')
+    plt.title('Sobel X')
+    plt.axis('off')
+
+    # Mostrar el gradiente en la dirección Y (Sobel Y)
+    plt.subplot(2, 3, 3)
+    plt.imshow(sobel_y, cmap='gray')
+    plt.title('Sobel Y')
+    plt.axis('off')
+
+    # Mostrar la magnitud del gradiente (combinación de Sobel X y Y)
+    plt.subplot(2, 3, 4)
+    plt.imshow(magnitud, cmap='gray')
+    plt.title('Magnitud del Gradiente')
+    plt.axis('off')
+
+    # Mostrar la fase del gradiente (dirección de los bordes) en un mapa de colores
+    plt.subplot(2, 3, 5)
+    plt.imshow(fase, cmap='hsv')  # El colormap 'hsv' ayuda a visualizar direcciones
+    plt.title('Fase del Gradiente (Dirección)')
+    plt.axis('off')
+
+    plt.tight_layout()  # Ajusta el espacio entre las subplots
+    plt.show()  # Muestra todas las imágenes en una ventana
