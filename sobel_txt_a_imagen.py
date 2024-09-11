@@ -41,3 +41,39 @@ def aplicar_sobel(imagen):
     magnitud = np.uint8(255 * magnitud / np.max(magnitud))  # Normalizar a un rango entre 0 y 255
     
     return sobel_x, sobel_y, magnitud
+
+
+def mostrar_imagenes(imagen_original, sobel_x, sobel_y, magnitud):
+    """
+    Muestra la imagen original reconstruida y los resultados del filtro Sobel en una cuadrícula.
+    
+    Parámetros:
+    - imagen_original (numpy array): Imagen original reconstruida desde el archivo.
+    - sobel_x (numpy array): Gradiente en la dirección X.
+    - sobel_y (numpy array): Gradiente en la dirección Y.
+    - magnitud (numpy array): Magnitud combinada del gradiente.
+    """
+    plt.figure(figsize=(12, 8))
+    
+    plt.subplot(2, 2, 1)
+    plt.imshow(imagen_original, cmap='gray')
+    plt.title('Imagen Original Reconstruida')
+    plt.axis('off')
+
+    plt.subplot(2, 2, 2)
+    plt.imshow(sobel_x, cmap='gray')
+    plt.title('Sobel X')
+    plt.axis('off')
+
+    plt.subplot(2, 2, 3)
+    plt.imshow(sobel_y, cmap='gray')
+    plt.title('Sobel Y')
+    plt.axis('off')
+
+    plt.subplot(2, 2, 4)
+    plt.imshow(magnitud, cmap='gray')
+    plt.title('Magnitud del Gradiente (Sobel)')
+    plt.axis('off')
+
+    plt.tight_layout()
+    plt.show()
