@@ -77,3 +77,14 @@ def mostrar_imagenes(imagen_original, sobel_x, sobel_y, magnitud):
 
     plt.tight_layout()
     plt.show()
+
+def guardar_imagen(imagen, ruta_salida):
+    """
+    Guarda una imagen en formato de archivo (JPG, PNG, etc.).
+    
+    Parámetros:
+    - imagen (numpy array): Imagen a guardar.
+    - ruta_salida (str): Ruta donde se guardará la imagen.
+    """
+    cv2.imwrite(ruta_salida, imagen)
+    print(f"Imagen guardada en: {ruta_salida}")
