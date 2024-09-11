@@ -88,3 +88,34 @@ def guardar_imagen(imagen, ruta_salida):
     """
     cv2.imwrite(ruta_salida, imagen)
     print(f"Imagen guardada en: {ruta_salida}")
+    
+def convertir_txt_a_imagen_y_sobel(ruta_txt, ruta_salida_imagen=None):
+    """
+    Lee una matriz desde un archivo de texto, la convierte en imagen y aplica el filtro Sobel.
+    
+    Parámetros:
+    - ruta_txt (str): Ruta del archivo de texto que contiene la matriz.
+    - ruta_salida_imagen (str, opcional): Ruta donde se guardará la imagen procesada.
+    """
+    try:
+        # 1. Leer la matriz desde el archivo de texto
+        matriz = leer_matriz_desde_txt(ruta_txt)
+        
+        # 2. Aplicar el filtro Sobel a la imagen reconstruida
+        sobel_x, sobel_y, magnitud = aplicar_sobel(matriz)
+        
+        # 3. Mostrar las imágenes originales y filtradas
+        mostrar_imagenes(matriz, sobel_x, sobel_y, magnitud)
+        
+        # 4. Guardar la imagen resultante si se proporciona una ruta de salida
+        if ruta_salida_imagen:
+            guardar_imagen(magnitud, ruta_salida_imagen)
+
+    except Exception as e:
+        print(f"Error: {e}")
+
+# Ejemplo de uso
+ruta_txt = 'resultado_sobel.txt'  # ruta del archivo de texto que contiene la matriz
+ruta_salida_imagen = 'imagen_sobel_procesada.jpg'  # guardar la imagen procesada
+convertir_txt_a_imagen_y_sobel(ruta_txt, ruta_salida_imagen)
+
