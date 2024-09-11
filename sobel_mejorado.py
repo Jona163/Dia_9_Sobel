@@ -69,7 +69,6 @@ def mostrar_resultados(imagen, sobel_x, sobel_y, magnitud, fase):
     - magnitud (numpy array): Magnitud combinada del gradiente.
     - fase (numpy array): Fase o dirección del gradiente.
     """
-
     plt.figure(figsize=(14, 10))  # Establece el tamaño de la figura
     
     # Mostrar la imagen original
@@ -104,7 +103,7 @@ def mostrar_resultados(imagen, sobel_x, sobel_y, magnitud, fase):
 
     plt.tight_layout()  # Ajusta el espacio entre las subplots
     plt.show()  # Muestra todas las imágenes en una ventana
-    
+
 def guardar_resultado(matriz, ruta_salida):
     """
     Guarda la matriz de la imagen procesada (magnitud del gradiente) en un archivo de texto.
@@ -146,4 +145,3 @@ def analisis_imagen_sobel(ruta_imagen, ruta_salida=None):
 ruta_imagen = 'chems.jpeg'  # ruta de tu imagen
 ruta_salida = 'resultado_sobel.txt'  # guardar la matriz
 analisis_imagen_sobel(ruta_imagen, ruta_salida)
-
